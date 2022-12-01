@@ -2,25 +2,58 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Countdown from 'react-countdown';
 import Snowfall from 'react-snowfall'
+import { Fireworks } from 'fireworks/lib/react'
 
 import Img from '../public/1.jpg'
+import { useEffect, useState } from 'react';
 export default function Home() {
+  
   const Completionist = () => {
+    const [show,setShow] = useState(false)
+    useEffect(() => {
+      setTimeout(()=>{
+        setShow(true)
+      },5000)
+    },[])
+    let fxProps = {
+      count: 3,
+      interval: 200,
+      colors: ['#C539B4', '#852999', '#FB2576'],
+      calc: (props, i) => ({
+        ...props,
+        x: (i + 1) * (window.innerWidth / 3) - (i + 1) * 100,
+        y: 200 + Math.random() * 100 - 50 + (i === 2 ? -80 : 0)
+      })
+    }
+
     return (
       <div className='h-screen w-full bg-black relative'>
         <div className='w-full h-full'>
-          <Image src="/snow2.jpg" width={100} height={100} className="w-full h-full fixed" />
+          {show &&
+            <Fireworks {...fxProps} />
+          }
+          <Image src="/snow3.jpg" width={100} height={100} className="w-full h-full fixed" />
           <div className='w-full h-full flex items-start sm:items-center justify-center fixed'>
-            <video autoPlay muted loop id="myVideo" className='w-auto h-full opacity-40 sm:opacity-75'>
+            <video autoPlay muted loop id="myVideo" className='w-auto h-full opacity-60 sm:opacity-75'>
               <source src="/v.mp4" type="video/mp4"/>
             </video>
           </div>
           <div className='w-full h-full absolute flex justify-center items-end sm:items-center bg-black/80'>
             <Snowfall/>
-            <div className='block sm:flex text-6xl sm:text-8xl text-center space-y-8 sm:space-y-0 sm:space-x-2 py-4'>
-              <div className='animate-pulse'>🥳 🥳</div>
-              <h1 className='text-white opacity-80'> Happy Birthday! </h1>
-              <div className='animate-pulse'>🥳 🥳</div>
+            <div>
+              <div className='block sm:flex text-4xl sm:text-8xl text-center space-y-8 sm:space-y-0 sm:space-x-2 py-4'>
+                <div className='animate-pulse hidden sm:block'>🥳 🥳</div>
+                <h1 className='text-white opacity-80'> Happy Birthday! </h1>
+                <div className='animate-pulse'>🥳 🥳</div>
+              </div>
+              <div className='mt-4 max-w-md mx-auto text-red-400 text-center text-2xl italic pb-4 px-4'>
+                <p>
+                A very happy birthday to you today!
+                <br/>
+                <br/>
+                May you celebrate your birthday with overflowing happiness and joy, my dear, and I hope that this year ahead blesses you with all the wonderful things you’ve been wishing for!
+                </p>
+              </div>
             </div>
           </div>
           </div>
