@@ -42,9 +42,9 @@ export default function Home() {
             <Snowfall/>
             <div>
               <div className='block sm:flex text-4xl sm:text-8xl text-center space-y-8 sm:space-y-0 sm:space-x-2 py-4'>
-                <div className='animate-pulse hidden sm:block'>🥳 🥳</div>
-                <h1 className='text-white opacity-80'> Happy Birthday! </h1>
-                <div className='animate-pulse'>🥳 🥳</div>
+                <div className='animate-pulse hidden sm:block animate-spin'>🥳</div>
+                <h1 className='text-white opacity-90 animate-ping'> Happy Birthday! </h1>
+                <div className='animate-pulse animate-spin'>🥳</div>
               </div>
               <div className='mt-4 max-w-md mx-auto text-red-400 text-center text-2xl italic pb-4 px-4'>
                 <p>
@@ -70,7 +70,8 @@ export default function Home() {
         <div className={`w-full h-screen bg-black`}>
           <div className="relative h-full w-full">
           <Snowfall/>
-            <div className="flex h-full w-full">
+          <Image src="/snow3.jpg" width={100} height={100} className="w-full h-full fixed opacity-30" />
+            <div className="absolute flex h-full w-full">
               <div className="relative overflow-hidden h-full w-full">
                 <div className="absolute inset-0 h-full w-full">
                   <div className="absolute inset-0 bg-indigo-100 mix-blend-multiply"></div>
@@ -78,7 +79,7 @@ export default function Home() {
                 <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex items-center justify-center h-full">
                   <div className='text-center relative text-white'>
                     <div className='mt-2 flex flex-col md:grid md:grid-cols-4 gap-2'>
-                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
+                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double '>
                         <h4 className='text-4xl md:text-8xl'>{days}</h4>
                         <span className='mt-2 text-blue-400'>Days</span>
                       </div>
@@ -90,7 +91,7 @@ export default function Home() {
                         <h4 className='text-4xl md:text-8xl'>{minutes}</h4>
                         <span className='mt-2 text-blue-400'>Minutes</span>
                       </div>
-                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
+                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double animate-ping'>
                         <h4 className='text-4xl md:text-8xl'>{seconds}</h4>
                         <span className='mt-2 text-blue-400'>Seconds</span>
                       </div>
@@ -112,7 +113,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>    
       </Head>
-      <Countdown date="2022-12-01" renderer={renderer} />
+      <Countdown date="2022-12-05" renderer={renderer} />
     </>
   )
 }
