@@ -1,11 +1,32 @@
+import Head from 'next/head';
+import Image from 'next/image';
 import Countdown from 'react-countdown';
 import Snowfall from 'react-snowfall'
 
 import Img from '../public/1.jpg'
 export default function Home() {
-
-  const dateStr1 = '2022-12-05';
-  const Completionist = () => <span>You are good to go!</span>;
+  const Completionist = () => {
+    return (
+      <div className='h-screen w-full bg-black relative'>
+        <div className='w-full h-full'>
+          <Image src="/snow2.jpg" width={100} height={100} className="w-full h-full fixed" />
+          <div className='w-full h-full flex items-start sm:items-center justify-center fixed'>
+            <video autoPlay muted loop id="myVideo" className='w-auto h-full opacity-40 sm:opacity-75'>
+              <source src="/v.mp4" type="video/mp4"/>
+            </video>
+          </div>
+          <div className='w-full h-full absolute flex justify-center items-end sm:items-center bg-black/80'>
+            <Snowfall/>
+            <div className='block sm:flex text-6xl sm:text-8xl text-center space-y-8 sm:space-y-0 sm:space-x-2 py-4'>
+              <div className='animate-pulse'>🥳 🥳</div>
+              <h1 className='text-white opacity-80'> Happy Birthday! </h1>
+              <div className='animate-pulse'>🥳 🥳</div>
+            </div>
+          </div>
+          </div>
+      </div>
+    )
+  }
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
@@ -13,23 +34,37 @@ export default function Home() {
     } else {
       // Render a countdown
       return( 
-        <div className='text-center relative text-white'>
-          <div className='mt-2 flex flex-col md:grid md:grid-cols-4 gap-2'>
-            <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
-              <h1 className='text-4xl md:text-8xl'>{days}</h1>
-              <span className='mt-2 text-blue-400'>Days</span>
-            </div>
-            <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
-              <h1 className='text-4xl md:text-8xl'>{hours}</h1>
-              <span className='mt-2 text-blue-400'>Hours</span>
-            </div>
-            <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
-              <h1 className='text-4xl md:text-8xl'>{minutes}</h1>
-              <span className='mt-2 text-blue-400'>Minutes</span>
-            </div>
-            <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
-              <h1 className='text-4xl md:text-8xl'>{seconds}</h1>
-              <span className='mt-2 text-blue-400'>Seconds</span>
+        <div className={`w-full h-screen bg-black`}>
+          <div className="relative h-full w-full">
+          <Snowfall/>
+            <div className="flex h-full w-full">
+              <div className="relative overflow-hidden h-full w-full">
+                <div className="absolute inset-0 h-full w-full">
+                  <div className="absolute inset-0 bg-indigo-100 mix-blend-multiply"></div>
+                </div>
+                <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex items-center justify-center h-full">
+                  <div className='text-center relative text-white'>
+                    <div className='mt-2 flex flex-col md:grid md:grid-cols-4 gap-2'>
+                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
+                        <h4 className='text-4xl md:text-8xl'>{days}</h4>
+                        <span className='mt-2 text-blue-400'>Days</span>
+                      </div>
+                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
+                        <h4 className='text-4xl md:text-8xl'>{hours}</h4>
+                        <span className='mt-2 text-blue-400'>Hours</span>
+                      </div>
+                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
+                        <h4 className='text-4xl md:text-8xl'>{minutes}</h4>
+                        <span className='mt-2 text-blue-400'>Minutes</span>
+                      </div>
+                      <div className='w-40 flex flex-col p-2 border-4 border-sky-500 border-double'>
+                        <h4 className='text-4xl md:text-8xl'>{seconds}</h4>
+                        <span className='mt-2 text-blue-400'>Seconds</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -37,20 +72,14 @@ export default function Home() {
     }
   };
   return (
-    <div className={`w-full h-screen bg-black`}>
-      <div className="relative h-full w-full">
-      <Snowfall/>
-        <div className="flex h-full w-full">
-          <div className="relative overflow-hidden h-full w-full">
-            <div className="absolute inset-0 h-full w-full">
-              <div className="absolute inset-0 bg-indigo-100 mix-blend-multiply"></div>
-            </div>
-            <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex items-center justify-center h-full">
-              <Countdown date="2022-12-05" renderer={renderer} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <Head>
+        <title>Its my birthday</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>    
+      </Head>
+      <Countdown date="2022-12-01" renderer={renderer} />
+    </>
   )
 }
