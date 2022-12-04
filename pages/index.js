@@ -113,7 +113,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>    
       </Head>
-      <Countdown date="2022-12-05" renderer={renderer} />
+      <Countdown date="2022-12-04" renderer={renderer} />
     </>
   )
 }
