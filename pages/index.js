@@ -26,6 +26,12 @@ export default function Home() {
       })
     }
 
+    function createMarkup() {
+      return {__html: `<video autoplay muted loop id="myVideo" className='w-auto h-full opacity-60 sm:opacity-75'>
+      <source src="/v.mp4" type="video/mp4"/>
+    </video>`};
+    }
+
     return (
       <div className='h-screen w-full bg-black relative'>
         <div className='w-full h-full'>
@@ -34,9 +40,7 @@ export default function Home() {
           }
           <Image src="/snow3.jpg" width={100} height={100} className="w-full h-full fixed" />
           <div className='w-full h-full flex items-start sm:items-center justify-center fixed'>
-            <video autoPlay muted loop id="myVideo" className='w-auto h-full opacity-60 sm:opacity-75'>
-              <source src="/v.mp4" type="video/mp4"/>
-            </video>
+          <div dangerouslySetInnerHTML={createMarkup()} />
           </div>
           <div className='w-full h-full absolute flex justify-center items-end sm:items-center bg-black/80'>
             <Snowfall/>
