@@ -34,7 +34,7 @@ export default function Home() {
           }
           <Image src="/snow3.jpg" width={100} height={100} className="w-full h-full fixed" />
           <div className='w-full h-full flex items-start sm:items-center justify-center fixed'>
-            <video autoplay muted loop id="myVideo" className='w-auto h-screen opacity-60 sm:opacity-75'>
+            <video autoPlay muted loop id="myVideo" className='w-auto h-screen opacity-60 sm:opacity-75'>
               <source src="/v.mp4" type="video/mp4"/>
             </video>
           </div>
